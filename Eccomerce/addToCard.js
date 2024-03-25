@@ -4,10 +4,10 @@ export const addToCard = (event, id, stock) => {
   const getProductDataLocalStorage = getProductDataFromLocalStorage();
 
   const currentPorductElement = document.querySelector(`#card${id}`);
-  let productQuantity = document.querySelector(".productQuantity").innerText;
+  let productQuantity = currentPorductElement.querySelector(".productQuantity").innerText;
   let price = currentPorductElement.querySelector(".productPrice").innerText;
 
-  // console.log(productQuantity, price);
+  console.log(productQuantity, price);
 
   price = price.replace("(PKR):", "");
   price = Number(price * productQuantity);
