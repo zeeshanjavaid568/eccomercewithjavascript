@@ -16,12 +16,11 @@ export const addToCard = (event, id, stock) => {
   let existingPorduct = getProductDataLocalStorage.find(
     (curProd) => curProd.id === id
   );
-  console.log("🚀 ~ addToCard ~ existingPorduct:", existingPorduct)
-
 
   if (existingPorduct && productQuantity > 1) {
-    productQuantity = Number(existingPorduct.productQuantity) + Number(productQuantity);
-    console.log("🚀 ~ addToCard ~ productQuantity:", productQuantity)
+    productQuantity =
+      Number(existingPorduct.productQuantity) + Number(productQuantity);
+    console.log("🚀 ~ addToCard ~ productQuantity:", productQuantity);
     price = Number(price * productQuantity);
     let updatedCart = { id, productQuantity, price };
     updatedCart = getProductDataLocalStorage.map((curProd) => {
@@ -30,10 +29,9 @@ export const addToCard = (event, id, stock) => {
     localStorage.setItem("productData", JSON.stringify(updatedCart));
   }
 
-    if (existingPorduct) {
+  if (existingPorduct) {
     return false;
   }
-
 
   price = Number(price * productQuantity);
   productQuantity = Number(productQuantity);
