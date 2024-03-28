@@ -1,3 +1,4 @@
+import { updateCartProductTotal } from "../updateCartProductTotal";
 import products from "./api/products.json";
 import { fetchQuantityFromLocalStorage } from "./fetchQuantityFromLocalStorage";
 import { getProductDataFromLocalStorage } from "./getProductDataFromLocalStorage";
@@ -46,3 +47,5 @@ const showAddToCartCard = () => {
 };
 
 showAddToCartCard();
+
+updateCartProductTotal();

@@ -1,3 +1,4 @@
+import { updateCartProductTotal } from "../updateCartProductTotal";
 import { getProductDataFromLocalStorage } from "./getProductDataFromLocalStorage";
 
 export const incrementDecrement = (event, id, stock, price) => {
@@ -52,4 +53,6 @@ export const incrementDecrement = (event, id, stock, price) => {
   //   also we need to reflect the changes on the screen too
   productQuantitys.innerText = productQuantity;
   productPrice.innerText = localStoragePrice;
+  
+  updateCartProductTotal();
 };
