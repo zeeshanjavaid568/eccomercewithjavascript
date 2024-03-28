@@ -1,6 +1,7 @@
 import products from "./api/products.json";
 import { fetchQuantityFromLocalStorage } from "./fetchQuantityFromLocalStorage";
 import { getProductDataFromLocalStorage } from "./getProductDataFromLocalStorage";
+import { incrementDecrement } from "./incrementDecrement";
 import { removeProdFromCart } from "./removeProdFromCart";
 
 let cartProducts = getProductDataFromLocalStorage();
@@ -17,7 +18,7 @@ const productCartTemplate = document.querySelector("#productCartTemplate");
 const showAddToCartCard = () => {
   filterPorducts.forEach((curProduct) => {
 
-    const { category, id, image, name, price } = curProduct;
+    const { category, id, image, name, price, stock } = curProduct;
 
     let productClone = document.importNode(productCartTemplate.content, true);
 
@@ -30,6 +31,13 @@ const showAddToCartCard = () => {
 
     productClone.querySelector('.productQuantity').textContent = reallData.productQuantity;
     productClone.querySelector('.productPrice').textContent = reallData.price;
+
+    // handle increment and decrement button
+    productClone
+      .querySelector(".stockElement")
+      .addEventListener("click", (event) => {
+        incrementDecrement(event, id, stock, price);
+      });
 
     productClone.querySelector('.remove-to-cart-button').addEventListener('click', ()=> removeProdFromCart(id))
 
