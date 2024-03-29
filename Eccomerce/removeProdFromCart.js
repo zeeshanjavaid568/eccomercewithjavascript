@@ -1,3 +1,4 @@
+import { showToast } from "../showToast";
 import { getProductDataFromLocalStorage } from "./getProductDataFromLocalStorage";
 import { updateCartValue } from "./updateCardValue";
 
@@ -11,6 +12,8 @@ export const removeProdFromCart = (id) => {
   let removeDiv = document.getElementById(`card${id}`);
   if (removeDiv) {
     removeDiv.remove();
+
+    showToast("remove", id);
   }
 
   updateCartValue(cartProducts);
